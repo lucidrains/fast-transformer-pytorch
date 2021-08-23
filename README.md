@@ -17,10 +17,10 @@ import torch
 from fast_transformer_pytorch import FastTransformer
 
 model = FastTransformer(
-	num_tokens = 20000,
-	dim = 512,
-	depth = 2,
-	max_seq_len = 4096
+    num_tokens = 20000,
+    dim = 512,
+    depth = 2,
+    max_seq_len = 4096
 )
 
 x = torch.randint(0, 20000, (1, 4096))
