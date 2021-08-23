@@ -1,3 +1,5 @@
+<img src="./fast-transformer.png" width="400px"></img>
+
 ## Fast Transformer - Pytorch (wip)
 
 Implementation of <a href="https://arxiv.org/abs/2108.09084">Fast Transformer</a> in Pytorch.
