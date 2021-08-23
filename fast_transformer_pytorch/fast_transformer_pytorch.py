@@ -64,7 +64,7 @@ class FastAttention(nn.Module):
         # calculate query attention logits
 
         q_attn_logits = rearrange(self.to_q_attn_logits(q), 'b h n () -> b h n') * self.scale
-        q_attn_logits = q_attn_logits.masked_fill(mask, mask_value)
+        q_attn_logits = q_attn_logits.masked_fill(~mask, mask_value)
         q_attn = q_attn_logits.softmax(dim = -1)
 
         # calculate global query token
@@ -79,7 +79,7 @@ class FastAttention(nn.Module):
         # now calculate key attention logits
 
         k_attn_logits = rearrange(self.to_k_attn_logits(k), 'b h n () -> b h n') * self.scale
-        k_attn_logits = k_attn_logits.masked_fill(mask, mask_value)
+        k_attn_logits = k_attn_logits.masked_fill(~mask, mask_value)
         k_attn = k_attn_logits.softmax(dim = -1)
 
         # calculate global key token
