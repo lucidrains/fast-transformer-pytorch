@@ -50,6 +50,8 @@ class FastAttention(nn.Module):
         self.to_q_attn_logits = nn.Linear(dim_head, 1, bias = False)  # for projecting queries to query attention logits
         self.to_k_attn_logits = nn.Linear(dim_head, 1, bias = False)  # for projecting keys to key attention logits
 
+        self.to_r = nn.Linear(dim_head, dim_head)
+
         self.to_out = nn.Linear(inner_dim, dim)
 
     def forward(self, x, mask = None):
@@ -90,11 +92,14 @@ class FastAttention(nn.Module):
         # bias the values
 
         v = v * global_k
-        v = rearrange(v, 'b h n d -> b n (h d)')
+        r = self.to_r(v)
+
+        r = r + q # paper says to add the queries as a residual
 
         # aggregate
 
-        return self.to_out(v)
+        r = rearrange(r, 'b h n d -> b n (h d)')
+        return self.to_out(r)
 
 # main class
 
