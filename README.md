@@ -20,7 +20,8 @@ model = FastTransformer(
     num_tokens = 20000,
     dim = 512,
     depth = 2,
-    max_seq_len = 4096
+    max_seq_len = 4096,
+    absolute_pos_emb = True   # default uses relative positional encoding, but if that isn't working, then turn on absolute positional embedding by setting this to True
 )
 
 x = torch.randint(0, 20000, (1, 4096))

@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
   name = 'fast-transformer-pytorch',
   packages = find_packages(),
-  version = '0.0.3',
+  version = '0.0.4',
   license='MIT',
   description = 'Fast Transformer - Pytorch',
   author = 'Phil Wang',
@@ -16,6 +16,7 @@ setup(
   ],
   install_requires=[
     'einops>=0.3',
+    'rotary-embedding-torch',
     'torch>=1.6'
   ],
   classifiers=[
