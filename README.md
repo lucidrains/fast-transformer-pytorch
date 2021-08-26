@@ -4,6 +4,10 @@
 
 Implementation of <a href="https://arxiv.org/abs/2108.09084">Fast Transformer</a> in Pytorch. This only work as an encoder.
 
+<a href="https://www.youtube.com/watch?v=qgUegkefocg">Yannic video</a>
+
+<a href="https://www.youtube.com/watch?v=Ich5TIvdYRE">AI Epiphany</a>
+
 ## Install
 
 ```bash
